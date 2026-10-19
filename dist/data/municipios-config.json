@@ -1,0 +1,1356 @@
+{
+  "generatedAt": "2026-10-19T03:46:21.571Z",
+  "sourceFile": "TAMAÑODEMUESTRAEHEdefinitivo.xlsx",
+  "municipalities": [
+    {
+      "code": "854",
+      "name": "25 de Mayo",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 5,
+      "sampleTarget": 1013,
+      "operationalUpms": 51,
+      "operationalTarget": 1020
+    },
+    {
+      "code": "588",
+      "name": "9 de Julio",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1190,
+      "operationalUpms": 60,
+      "operationalTarget": 1200
+    },
+    {
+      "code": "007",
+      "name": "Adolfo Alsina",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 863,
+      "operationalUpms": 44,
+      "operationalTarget": 880
+    },
+    {
+      "code": "014",
+      "name": "Adolfo Gonzales Chaves",
+      "domain": "10",
+      "region": "INTERIOR",
+      "provincialUpms": 4,
+      "sampleTarget": 1060,
+      "operationalUpms": 53,
+      "operationalTarget": 1060
+    },
+    {
+      "code": "021",
+      "name": "Alberti",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1215,
+      "operationalUpms": 61,
+      "operationalTarget": 1220
+    },
+    {
+      "code": "028",
+      "name": "Almirante Brown",
+      "domain": "14",
+      "region": "AMBA",
+      "provincialUpms": 9,
+      "sampleTarget": 673,
+      "operationalUpms": 34,
+      "operationalTarget": 680
+    },
+    {
+      "code": "077",
+      "name": "Arrecifes",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 910,
+      "operationalUpms": 46,
+      "operationalTarget": 920
+    },
+    {
+      "code": "035",
+      "name": "Avellaneda",
+      "domain": "15",
+      "region": "AMBA",
+      "provincialUpms": 14,
+      "sampleTarget": 684,
+      "operationalUpms": 35,
+      "operationalTarget": 700
+    },
+    {
+      "code": "042",
+      "name": "Ayacucho",
+      "domain": "08",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1124,
+      "operationalUpms": 57,
+      "operationalTarget": 1140
+    },
+    {
+      "code": "049",
+      "name": "Azul",
+      "domain": "08",
+      "region": "INTERIOR",
+      "provincialUpms": 5,
+      "sampleTarget": 853,
+      "operationalUpms": 43,
+      "operationalTarget": 860
+    },
+    {
+      "code": "056",
+      "name": "Bahía Blanca",
+      "domain": "09",
+      "region": "INTERIOR",
+      "provincialUpms": 19,
+      "sampleTarget": 444,
+      "operationalUpms": 23,
+      "operationalTarget": 460
+    },
+    {
+      "code": "063",
+      "name": "Balcarce",
+      "domain": "10",
+      "region": "INTERIOR",
+      "provincialUpms": 4,
+      "sampleTarget": 993,
+      "operationalUpms": 50,
+      "operationalTarget": 1000
+    },
+    {
+      "code": "070",
+      "name": "Baradero",
+      "domain": "01",
+      "region": "INTERIOR",
+      "provincialUpms": 3,
+      "sampleTarget": 759,
+      "operationalUpms": 38,
+      "operationalTarget": 760
+    },
+    {
+      "code": "084",
+      "name": "Benito Juárez",
+      "domain": "08",
+      "region": "INTERIOR",
+      "provincialUpms": 3,
+      "sampleTarget": 998,
+      "operationalUpms": 50,
+      "operationalTarget": 1000
+    },
+    {
+      "code": "091",
+      "name": "Berazategui",
+      "domain": "14",
+      "region": "AMBA",
+      "provincialUpms": 11,
+      "sampleTarget": 593,
+      "operationalUpms": 30,
+      "operationalTarget": 600
+    },
+    {
+      "code": "098",
+      "name": "Berisso",
+      "domain": "06",
+      "region": "AMBA",
+      "provincialUpms": 1,
+      "sampleTarget": 896,
+      "operationalUpms": 45,
+      "operationalTarget": 900
+    },
+    {
+      "code": "105",
+      "name": "Bolívar",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 6,
+      "sampleTarget": 1063,
+      "operationalUpms": 54,
+      "operationalTarget": 1080
+    },
+    {
+      "code": "112",
+      "name": "Bragado",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 941,
+      "operationalUpms": 48,
+      "operationalTarget": 960
+    },
+    {
+      "code": "119",
+      "name": "Brandsen",
+      "domain": "06",
+      "region": "AMBA",
+      "provincialUpms": 3,
+      "sampleTarget": 836,
+      "operationalUpms": 42,
+      "operationalTarget": 840
+    },
+    {
+      "code": "126",
+      "name": "Campana",
+      "domain": "17",
+      "region": "AMBA",
+      "provincialUpms": 10,
+      "sampleTarget": 665,
+      "operationalUpms": 34,
+      "operationalTarget": 680
+    },
+    {
+      "code": "134",
+      "name": "Cañuelas",
+      "domain": "06",
+      "region": "AMBA",
+      "provincialUpms": 2,
+      "sampleTarget": 830,
+      "operationalUpms": 42,
+      "operationalTarget": 840
+    },
+    {
+      "code": "140",
+      "name": "Capitán Sarmiento",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1061,
+      "operationalUpms": 54,
+      "operationalTarget": 1080
+    },
+    {
+      "code": "147",
+      "name": "Carlos Casares",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1104,
+      "operationalUpms": 56,
+      "operationalTarget": 1120
+    },
+    {
+      "code": "154",
+      "name": "Carlos Tejedor",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1004,
+      "operationalUpms": 51,
+      "operationalTarget": 1020
+    },
+    {
+      "code": "161",
+      "name": "Carmen de Areco",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1142,
+      "operationalUpms": 58,
+      "operationalTarget": 1160
+    },
+    {
+      "code": "168",
+      "name": "Castelli",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1084,
+      "operationalUpms": 55,
+      "operationalTarget": 1100
+    },
+    {
+      "code": "210",
+      "name": "Chacabuco",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1190,
+      "operationalUpms": 60,
+      "operationalTarget": 1200
+    },
+    {
+      "code": "218",
+      "name": "Chascomús",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 4,
+      "sampleTarget": 1006,
+      "operationalUpms": 51,
+      "operationalTarget": 1020
+    },
+    {
+      "code": "224",
+      "name": "Chivilcoy",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1094,
+      "operationalUpms": 55,
+      "operationalTarget": 1100
+    },
+    {
+      "code": "175",
+      "name": "Colón",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 3,
+      "sampleTarget": 1217,
+      "operationalUpms": 61,
+      "operationalTarget": 1220
+    },
+    {
+      "code": "182",
+      "name": "Coronel de Marina L.\r\nRosales",
+      "domain": "09",
+      "region": "INTERIOR",
+      "provincialUpms": 3,
+      "sampleTarget": 1049,
+      "operationalUpms": 53,
+      "operationalTarget": 1060
+    },
+    {
+      "code": "189",
+      "name": "Coronel Dorrego",
+      "domain": "10",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1000,
+      "operationalUpms": 50,
+      "operationalTarget": 1000
+    },
+    {
+      "code": "196",
+      "name": "Coronel Pringles",
+      "domain": "10",
+      "region": "INTERIOR",
+      "provincialUpms": 3,
+      "sampleTarget": 994,
+      "operationalUpms": 50,
+      "operationalTarget": 1000
+    },
+    {
+      "code": "203",
+      "name": "Coronel Suárez",
+      "domain": "09",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 984,
+      "operationalUpms": 50,
+      "operationalTarget": 1000
+    },
+    {
+      "code": "231",
+      "name": "Daireaux",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1116,
+      "operationalUpms": 56,
+      "operationalTarget": 1120
+    },
+    {
+      "code": "238",
+      "name": "Dolores",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 3,
+      "sampleTarget": 933,
+      "operationalUpms": 47,
+      "operationalTarget": 940
+    },
+    {
+      "code": "245",
+      "name": "Ensenada",
+      "domain": "06",
+      "region": "AMBA",
+      "provincialUpms": 2,
+      "sampleTarget": 931,
+      "operationalUpms": 47,
+      "operationalTarget": 940
+    },
+    {
+      "code": "252",
+      "name": "Escobar",
+      "domain": "17",
+      "region": "AMBA",
+      "provincialUpms": 17,
+      "sampleTarget": 636,
+      "operationalUpms": 32,
+      "operationalTarget": 640
+    },
+    {
+      "code": "260",
+      "name": "Esteban Echeverría",
+      "domain": "14",
+      "region": "AMBA",
+      "provincialUpms": 6,
+      "sampleTarget": 721,
+      "operationalUpms": 37,
+      "operationalTarget": 740
+    },
+    {
+      "code": "266",
+      "name": "Exaltación de la Cruz",
+      "domain": "04",
+      "region": "AMBA",
+      "provincialUpms": 4,
+      "sampleTarget": 909,
+      "operationalUpms": 46,
+      "operationalTarget": 920
+    },
+    {
+      "code": "270",
+      "name": "Ezeiza",
+      "domain": "14",
+      "region": "AMBA",
+      "provincialUpms": 7,
+      "sampleTarget": 749,
+      "operationalUpms": 38,
+      "operationalTarget": 760
+    },
+    {
+      "code": "274",
+      "name": "Florencio Varela",
+      "domain": "14",
+      "region": "AMBA",
+      "provincialUpms": 19,
+      "sampleTarget": 326,
+      "operationalUpms": 17,
+      "operationalTarget": 340
+    },
+    {
+      "code": "277",
+      "name": "Florentino Ameghino",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 857,
+      "operationalUpms": 43,
+      "operationalTarget": 860
+    },
+    {
+      "code": "280",
+      "name": "General Alvarado",
+      "domain": "11",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1006,
+      "operationalUpms": 51,
+      "operationalTarget": 1020
+    },
+    {
+      "code": "287",
+      "name": "General Alvear",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1253,
+      "operationalUpms": 63,
+      "operationalTarget": 1260
+    },
+    {
+      "code": "294",
+      "name": "General Arenales",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1030,
+      "operationalUpms": 52,
+      "operationalTarget": 1040
+    },
+    {
+      "code": "301",
+      "name": "General Belgrano",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 4,
+      "sampleTarget": 992,
+      "operationalUpms": 50,
+      "operationalTarget": 1000
+    },
+    {
+      "code": "308",
+      "name": "General Guido",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1030,
+      "operationalUpms": 52,
+      "operationalTarget": 1040
+    },
+    {
+      "code": "315",
+      "name": "General Juan Madariaga",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 5,
+      "sampleTarget": 960,
+      "operationalUpms": 48,
+      "operationalTarget": 960
+    },
+    {
+      "code": "322",
+      "name": "General La Madrid",
+      "domain": "08",
+      "region": "INTERIOR",
+      "provincialUpms": 3,
+      "sampleTarget": 1271,
+      "operationalUpms": 64,
+      "operationalTarget": 1280
+    },
+    {
+      "code": "329",
+      "name": "General Las Heras",
+      "domain": "04",
+      "region": "AMBA",
+      "provincialUpms": 0,
+      "sampleTarget": 818,
+      "operationalUpms": 41,
+      "operationalTarget": 820
+    },
+    {
+      "code": "336",
+      "name": "General Lavalle",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 895,
+      "operationalUpms": 45,
+      "operationalTarget": 900
+    },
+    {
+      "code": "343",
+      "name": "General Paz",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1047,
+      "operationalUpms": 53,
+      "operationalTarget": 1060
+    },
+    {
+      "code": "351",
+      "name": "General Pinto",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1050,
+      "operationalUpms": 53,
+      "operationalTarget": 1060
+    },
+    {
+      "code": "357",
+      "name": "General Pueyrredón",
+      "domain": "11",
+      "region": "INTERIOR",
+      "provincialUpms": 27,
+      "sampleTarget": 462,
+      "operationalUpms": 24,
+      "operationalTarget": 480
+    },
+    {
+      "code": "364",
+      "name": "General Rodríguez",
+      "domain": "04",
+      "region": "AMBA",
+      "provincialUpms": 7,
+      "sampleTarget": 840,
+      "operationalUpms": 42,
+      "operationalTarget": 840
+    },
+    {
+      "code": "371",
+      "name": "General San Martín",
+      "domain": "16",
+      "region": "AMBA",
+      "provincialUpms": 14,
+      "sampleTarget": 767,
+      "operationalUpms": 39,
+      "operationalTarget": 780
+    },
+    {
+      "code": "385",
+      "name": "General Viamonte",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1102,
+      "operationalUpms": 56,
+      "operationalTarget": 1120
+    },
+    {
+      "code": "392",
+      "name": "General Villegas",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 3,
+      "sampleTarget": 947,
+      "operationalUpms": 48,
+      "operationalTarget": 960
+    },
+    {
+      "code": "399",
+      "name": "Guaminí",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1097,
+      "operationalUpms": 55,
+      "operationalTarget": 1100
+    },
+    {
+      "code": "406",
+      "name": "Hipólito Yrigoyen",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 852,
+      "operationalUpms": 43,
+      "operationalTarget": 860
+    },
+    {
+      "code": "408",
+      "name": "Hurlingham",
+      "domain": "12",
+      "region": "AMBA",
+      "provincialUpms": 6,
+      "sampleTarget": 476,
+      "operationalUpms": 24,
+      "operationalTarget": 480
+    },
+    {
+      "code": "410",
+      "name": "Ituzaingó",
+      "domain": "12",
+      "region": "AMBA",
+      "provincialUpms": 6,
+      "sampleTarget": 870,
+      "operationalUpms": 44,
+      "operationalTarget": 880
+    },
+    {
+      "code": "412",
+      "name": "José C. Paz",
+      "domain": "12",
+      "region": "AMBA",
+      "provincialUpms": 14,
+      "sampleTarget": 413,
+      "operationalUpms": 21,
+      "operationalTarget": 420
+    },
+    {
+      "code": "413",
+      "name": "Junín",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 5,
+      "sampleTarget": 1024,
+      "operationalUpms": 52,
+      "operationalTarget": 1040
+    },
+    {
+      "code": "420",
+      "name": "La Costa",
+      "domain": "11",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1022,
+      "operationalUpms": 52,
+      "operationalTarget": 1040
+    },
+    {
+      "code": "427",
+      "name": "La Matanza",
+      "domain": "13",
+      "region": "AMBA",
+      "provincialUpms": 36,
+      "sampleTarget": 173,
+      "operationalUpms": 9,
+      "operationalTarget": 180
+    },
+    {
+      "code": "441",
+      "name": "La Plata",
+      "domain": "06",
+      "region": "AMBA",
+      "provincialUpms": 23,
+      "sampleTarget": 414,
+      "operationalUpms": 21,
+      "operationalTarget": 420
+    },
+    {
+      "code": "434",
+      "name": "Lanús",
+      "domain": "15",
+      "region": "AMBA",
+      "provincialUpms": 14,
+      "sampleTarget": 783,
+      "operationalUpms": 40,
+      "operationalTarget": 800
+    },
+    {
+      "code": "448",
+      "name": "Laprida",
+      "domain": "08",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1390,
+      "operationalUpms": 70,
+      "operationalTarget": 1400
+    },
+    {
+      "code": "455",
+      "name": "Las Flores",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1047,
+      "operationalUpms": 53,
+      "operationalTarget": 1060
+    },
+    {
+      "code": "462",
+      "name": "Leandro N. Alem",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1017,
+      "operationalUpms": 51,
+      "operationalTarget": 1020
+    },
+    {
+      "code": "466",
+      "name": "Lezama",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1078,
+      "operationalUpms": 54,
+      "operationalTarget": 1080
+    },
+    {
+      "code": "469",
+      "name": "Lincoln",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 5,
+      "sampleTarget": 1220,
+      "operationalUpms": 61,
+      "operationalTarget": 1220
+    },
+    {
+      "code": "476",
+      "name": "Lobería",
+      "domain": "10",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1080,
+      "operationalUpms": 54,
+      "operationalTarget": 1080
+    },
+    {
+      "code": "483",
+      "name": "Lobos",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 913,
+      "operationalUpms": 46,
+      "operationalTarget": 920
+    },
+    {
+      "code": "490",
+      "name": "Lomas de Zamora",
+      "domain": "15",
+      "region": "AMBA",
+      "provincialUpms": 17,
+      "sampleTarget": 497,
+      "operationalUpms": 25,
+      "operationalTarget": 500
+    },
+    {
+      "code": "497",
+      "name": "Luján",
+      "domain": "04",
+      "region": "AMBA",
+      "provincialUpms": 8,
+      "sampleTarget": 829,
+      "operationalUpms": 42,
+      "operationalTarget": 840
+    },
+    {
+      "code": "505",
+      "name": "Magdalena",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 3,
+      "sampleTarget": 1124,
+      "operationalUpms": 57,
+      "operationalTarget": 1140
+    },
+    {
+      "code": "511",
+      "name": "Maipú",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 999,
+      "operationalUpms": 50,
+      "operationalTarget": 1000
+    },
+    {
+      "code": "515",
+      "name": "Malvinas Argentinas",
+      "domain": "12",
+      "region": "AMBA",
+      "provincialUpms": 6,
+      "sampleTarget": 580,
+      "operationalUpms": 29,
+      "operationalTarget": 580
+    },
+    {
+      "code": "518",
+      "name": "Mar Chiquita",
+      "domain": "11",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 965,
+      "operationalUpms": 49,
+      "operationalTarget": 980
+    },
+    {
+      "code": "525",
+      "name": "Marcos Paz",
+      "domain": "04",
+      "region": "AMBA",
+      "provincialUpms": 1,
+      "sampleTarget": 902,
+      "operationalUpms": 46,
+      "operationalTarget": 920
+    },
+    {
+      "code": "532",
+      "name": "Mercedes",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 908,
+      "operationalUpms": 46,
+      "operationalTarget": 920
+    },
+    {
+      "code": "539",
+      "name": "Merlo",
+      "domain": "13",
+      "region": "AMBA",
+      "provincialUpms": 8,
+      "sampleTarget": 379,
+      "operationalUpms": 19,
+      "operationalTarget": 380
+    },
+    {
+      "code": "547",
+      "name": "Monte",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 922,
+      "operationalUpms": 47,
+      "operationalTarget": 940
+    },
+    {
+      "code": "553",
+      "name": "Monte Hermoso",
+      "domain": "10",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1478,
+      "operationalUpms": 74,
+      "operationalTarget": 1480
+    },
+    {
+      "code": "560",
+      "name": "Moreno",
+      "domain": "13",
+      "region": "AMBA",
+      "provincialUpms": 13,
+      "sampleTarget": 557,
+      "operationalUpms": 28,
+      "operationalTarget": 560
+    },
+    {
+      "code": "568",
+      "name": "Morón",
+      "domain": "16",
+      "region": "AMBA",
+      "provincialUpms": 11,
+      "sampleTarget": 904,
+      "operationalUpms": 46,
+      "operationalTarget": 920
+    },
+    {
+      "code": "574",
+      "name": "Navarro",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1029,
+      "operationalUpms": 52,
+      "operationalTarget": 1040
+    },
+    {
+      "code": "581",
+      "name": "Necochea",
+      "domain": "10",
+      "region": "INTERIOR",
+      "provincialUpms": 8,
+      "sampleTarget": 689,
+      "operationalUpms": 35,
+      "operationalTarget": 700
+    },
+    {
+      "code": "595",
+      "name": "Olavarría",
+      "domain": "08",
+      "region": "INTERIOR",
+      "provincialUpms": 5,
+      "sampleTarget": 813,
+      "operationalUpms": 41,
+      "operationalTarget": 820
+    },
+    {
+      "code": "602",
+      "name": "Patagones",
+      "domain": "09",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1024,
+      "operationalUpms": 52,
+      "operationalTarget": 1040
+    },
+    {
+      "code": "609",
+      "name": "Pehuajó",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 4,
+      "sampleTarget": 875,
+      "operationalUpms": 44,
+      "operationalTarget": 880
+    },
+    {
+      "code": "616",
+      "name": "Pellegrini",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1040,
+      "operationalUpms": 52,
+      "operationalTarget": 1040
+    },
+    {
+      "code": "623",
+      "name": "Pergamino",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 8,
+      "sampleTarget": 775,
+      "operationalUpms": 39,
+      "operationalTarget": 780
+    },
+    {
+      "code": "630",
+      "name": "Pila",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1201,
+      "operationalUpms": 61,
+      "operationalTarget": 1220
+    },
+    {
+      "code": "638",
+      "name": "Pilar",
+      "domain": "04",
+      "region": "AMBA",
+      "provincialUpms": 14,
+      "sampleTarget": 601,
+      "operationalUpms": 31,
+      "operationalTarget": 620
+    },
+    {
+      "code": "644",
+      "name": "Pinamar",
+      "domain": "11",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1296,
+      "operationalUpms": 65,
+      "operationalTarget": 1300
+    },
+    {
+      "code": "648",
+      "name": "Presidente Perón",
+      "domain": "06",
+      "region": "AMBA",
+      "provincialUpms": 3,
+      "sampleTarget": 703,
+      "operationalUpms": 36,
+      "operationalTarget": 720
+    },
+    {
+      "code": "651",
+      "name": "Puan",
+      "domain": "09",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1333,
+      "operationalUpms": 67,
+      "operationalTarget": 1340
+    },
+    {
+      "code": "655",
+      "name": "Punta Indio",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 3,
+      "sampleTarget": 1169,
+      "operationalUpms": 59,
+      "operationalTarget": 1180
+    },
+    {
+      "code": "658",
+      "name": "Quilmes",
+      "domain": "15",
+      "region": "AMBA",
+      "provincialUpms": 16,
+      "sampleTarget": 505,
+      "operationalUpms": 26,
+      "operationalTarget": 520
+    },
+    {
+      "code": "665",
+      "name": "Ramallo",
+      "domain": "01",
+      "region": "INTERIOR",
+      "provincialUpms": 4,
+      "sampleTarget": 750,
+      "operationalUpms": 38,
+      "operationalTarget": 760
+    },
+    {
+      "code": "672",
+      "name": "Rauch",
+      "domain": "08",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1383,
+      "operationalUpms": 70,
+      "operationalTarget": 1400
+    },
+    {
+      "code": "679",
+      "name": "Rivadavia",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1202,
+      "operationalUpms": 61,
+      "operationalTarget": 1220
+    },
+    {
+      "code": "686",
+      "name": "Rojas",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1093,
+      "operationalUpms": 55,
+      "operationalTarget": 1100
+    },
+    {
+      "code": "693",
+      "name": "Roque Pérez",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1356,
+      "operationalUpms": 68,
+      "operationalTarget": 1360
+    },
+    {
+      "code": "700",
+      "name": "Saavedra",
+      "domain": "09",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1374,
+      "operationalUpms": 69,
+      "operationalTarget": 1380
+    },
+    {
+      "code": "707",
+      "name": "Saladillo",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 4,
+      "sampleTarget": 1420,
+      "operationalUpms": 71,
+      "operationalTarget": 1420
+    },
+    {
+      "code": "721",
+      "name": "Salliqueló",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1446,
+      "operationalUpms": 73,
+      "operationalTarget": 1460
+    },
+    {
+      "code": "714",
+      "name": "Salto",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 974,
+      "operationalUpms": 49,
+      "operationalTarget": 980
+    },
+    {
+      "code": "728",
+      "name": "San Andres de Giles",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1193,
+      "operationalUpms": 60,
+      "operationalTarget": 1200
+    },
+    {
+      "code": "735",
+      "name": "San Antonio de Areco",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1312,
+      "operationalUpms": 66,
+      "operationalTarget": 1320
+    },
+    {
+      "code": "742",
+      "name": "San Cayetano",
+      "domain": "10",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1214,
+      "operationalUpms": 61,
+      "operationalTarget": 1220
+    },
+    {
+      "code": "749",
+      "name": "San Fernando",
+      "domain": "12",
+      "region": "AMBA",
+      "provincialUpms": 3,
+      "sampleTarget": 896,
+      "operationalUpms": 45,
+      "operationalTarget": 900
+    },
+    {
+      "code": "756",
+      "name": "San Isidro",
+      "domain": "16",
+      "region": "AMBA",
+      "provincialUpms": 10,
+      "sampleTarget": 676,
+      "operationalUpms": 34,
+      "operationalTarget": 680
+    },
+    {
+      "code": "760",
+      "name": "San Miguel",
+      "domain": "12",
+      "region": "AMBA",
+      "provincialUpms": 13,
+      "sampleTarget": 595,
+      "operationalUpms": 30,
+      "operationalTarget": 600
+    },
+    {
+      "code": "763",
+      "name": "San Nicolás",
+      "domain": "01",
+      "region": "INTERIOR",
+      "provincialUpms": 13,
+      "sampleTarget": 586,
+      "operationalUpms": 30,
+      "operationalTarget": 600
+    },
+    {
+      "code": "770",
+      "name": "San Pedro",
+      "domain": "01",
+      "region": "INTERIOR",
+      "provincialUpms": 6,
+      "sampleTarget": 1010,
+      "operationalUpms": 51,
+      "operationalTarget": 1020
+    },
+    {
+      "code": "778",
+      "name": "San Vicente",
+      "domain": "06",
+      "region": "AMBA",
+      "provincialUpms": 4,
+      "sampleTarget": 862,
+      "operationalUpms": 44,
+      "operationalTarget": 880
+    },
+    {
+      "code": "784",
+      "name": "Suipacha",
+      "domain": "02",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1039,
+      "operationalUpms": 52,
+      "operationalTarget": 1040
+    },
+    {
+      "code": "791",
+      "name": "Tandil",
+      "domain": "08",
+      "region": "INTERIOR",
+      "provincialUpms": 8,
+      "sampleTarget": 807,
+      "operationalUpms": 41,
+      "operationalTarget": 820
+    },
+    {
+      "code": "798",
+      "name": "Tapalqué",
+      "domain": "05",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 990,
+      "operationalUpms": 50,
+      "operationalTarget": 1000
+    },
+    {
+      "code": "805",
+      "name": "Tigre",
+      "domain": "12",
+      "region": "AMBA",
+      "provincialUpms": 9,
+      "sampleTarget": 750,
+      "operationalUpms": 38,
+      "operationalTarget": 760
+    },
+    {
+      "code": "812",
+      "name": "Tordillo",
+      "domain": "07",
+      "region": "INTERIOR",
+      "provincialUpms": 0,
+      "sampleTarget": 1048,
+      "operationalUpms": 53,
+      "operationalTarget": 1060
+    },
+    {
+      "code": "819",
+      "name": "Tornquist",
+      "domain": "09",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1337,
+      "operationalUpms": 67,
+      "operationalTarget": 1340
+    },
+    {
+      "code": "826",
+      "name": "Trenque Lauquen",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 4,
+      "sampleTarget": 1244,
+      "operationalUpms": 63,
+      "operationalTarget": 1260
+    },
+    {
+      "code": "833",
+      "name": "Tres Arroyos",
+      "domain": "10",
+      "region": "INTERIOR",
+      "provincialUpms": 5,
+      "sampleTarget": 1161,
+      "operationalUpms": 59,
+      "operationalTarget": 1180
+    },
+    {
+      "code": "840",
+      "name": "Tres de Febrero",
+      "domain": "16",
+      "region": "AMBA",
+      "provincialUpms": 8,
+      "sampleTarget": 930,
+      "operationalUpms": 47,
+      "operationalTarget": 940
+    },
+    {
+      "code": "847",
+      "name": "Tres Lomas",
+      "domain": "03",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1224,
+      "operationalUpms": 62,
+      "operationalTarget": 1240
+    },
+    {
+      "code": "861",
+      "name": "Vicente López",
+      "domain": "16",
+      "region": "AMBA",
+      "provincialUpms": 9,
+      "sampleTarget": 682,
+      "operationalUpms": 35,
+      "operationalTarget": 700
+    },
+    {
+      "code": "868",
+      "name": "Villa Gesell",
+      "domain": "11",
+      "region": "INTERIOR",
+      "provincialUpms": 1,
+      "sampleTarget": 1117,
+      "operationalUpms": 56,
+      "operationalTarget": 1120
+    },
+    {
+      "code": "875",
+      "name": "Villarino",
+      "domain": "09",
+      "region": "INTERIOR",
+      "provincialUpms": 2,
+      "sampleTarget": 1041,
+      "operationalUpms": 53,
+      "operationalTarget": 1060
+    },
+    {
+      "code": "882",
+      "name": "Zárate",
+      "domain": "17",
+      "region": "AMBA",
+      "provincialUpms": 5,
+      "sampleTarget": 618,
+      "operationalUpms": 31,
+      "operationalTarget": 620
+    }
+  ]
+}
