@@ -1,5 +1,6 @@
 /INICIAR_APLICATIVO.bat
 /node_modules
+/dist
 /scripts
 .env
 .env.local
