@@ -110,6 +110,8 @@ export interface MunicipalitySelectionResult {
   status: 'ok' | 'error'
   domain: string
   region: string
+  provincialUpmsOver5000: number | null
+  provincialUpmsUnder2000: number | null
   provincialUpms: number | null
   sampleTarget: number | null
   operationalTarget: number | null
@@ -127,6 +129,7 @@ export interface MunicipalitySelectionResult {
   control: string
   outputFile: string
   sourceFrame: string
+  localityFrame: string
   sourceUpmsMaster: number | null
   sourceUpmsReference: number | null
   sourceUpmsAvailable: number | null

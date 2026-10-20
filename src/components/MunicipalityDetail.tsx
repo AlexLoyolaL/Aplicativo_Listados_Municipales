@@ -76,7 +76,7 @@ export function MunicipalityDetail({ summary, config, selectionResult, baseRows,
       <header className="page-heading"><div><span className="eyebrow">Municipio {summary.code}</span><h1>{summary.name}</h1><p>Conciliación entre la base maestra y los listados de viviendas.</p></div><div className={files.length ? 'status-pill ok' : 'status-pill'}>{files.length ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}{files.length ? `${files.length} listado${files.length > 1 ? 's' : ''}` : 'Sin listado cargado'}</div></header>
       <section className={`design-status ${design.method}`}>
         <div><span className="eyebrow">Método de selección</span><h2>{design.methodLabel}</h2><p>{design.reason}</p></div>
-        <div className="design-facts"><span><b>{fmt.format(design.requiredOperationalUpms)}</b> UPM requeridas</span><span><b>{fmt.format(design.sanMartinEligibleUpms)}</b> aptas San Martín</span><span><b>{fmt.format(selectionResult?.sourceUpmsMissing ?? 0)}</b> UPM fuente faltantes</span></div>
+        <div className="design-facts"><span><b>{fmt.format(design.requiredOperationalUpms)}</b> UPM requeridas</span><span><b>{fmt.format(design.sanMartinEligibleUpms)}</b> aptas San Martín</span><span><b>{selectionResult?.sourceUpmsMissing == null ? '—' : fmt.format(selectionResult.sourceUpmsMissing)}</b> UPM fuente faltantes</span></div>
         <button className="secondary-button" disabled={!design.canSelect} onClick={onOpenSelection}>{design.canSelect ? 'Ver selección' : 'Sin selección'} <ArrowRight size={15} /></button>
       </section>
       <section className="metric-grid detail-metrics">
