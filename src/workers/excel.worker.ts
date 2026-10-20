@@ -3,7 +3,8 @@ import * as XLSX from 'xlsx'
 import type { ListFileAnalysis, PackedBaseData, PreviewRow, RadioAnalysis, Scalar, WorkerRequest, WorkerResponse } from '../types'
 
 const VALID_TYPES = new Set(['A', 'FD', 'B1', 'B2', 'B3', 'C', 'D', 'VE', 'H'])
-const CORE_COLUMNS = ['codradio','latitud','longitud','fraccion','radio','codpart','partido','codloc','localidad','loc_mas_5000','viviendas_mora_presentes','CLUSTER_ID','UPMs_automaticas','UPM_valida','Cant_Radios','UPM_seleccionada','UPM_seleccionada2']
+const REQUIRED_BASE_COLUMNS = ['codradio','latitud','longitud','fraccion','radio','codpart','partido','codloc','localidad','loc_mas_5000','viviendas_mora_presentes','CLUSTER_ID','UPMs_automaticas','UPM_valida','Cant_Radios','UPM_seleccionada','UPM_seleccionada2']
+const OUTPUT_BASE_COLUMNS = ['codradio','latitud','longitud','fraccion','radio','codpart','partido','codloc','localidad','urb_rur_2000','loc_mas_5000','viviendas_mora_presentes','CLUSTER_ID','UPMs_automaticas','UPM_valida','Cant_Radios','UPM_seleccionada','UPM_seleccionada2']
 
 function normalize(value: string): string {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().replace(/[^A-Z0-9]/g, '')
@@ -108,19 +109,19 @@ function parseBase(file: File, workbook: XLSX.WorkBook): PackedBaseData {
   const records = XLSX.utils.sheet_to_json<Record<string, unknown>>(workbook.Sheets[sheetName], { defval: null, raw: true })
   const sourceColumns = records.length ? Object.keys(records[0]) : []
   const lookup = new Map(sourceColumns.map((column) => [normalize(column), column]))
-  const selected = CORE_COLUMNS.map((column) => lookup.get(normalize(column)))
-  const missing = CORE_COLUMNS.filter((_column, index) => !selected[index])
+  const missing = REQUIRED_BASE_COLUMNS.filter((column) => !lookup.get(normalize(column)))
   if (missing.length) throw new Error(`Faltan columnas esenciales: ${missing.join(', ')}`)
-  const rows = records.map((record) => selected.map((column) => clean(record[column!])))
+  const selected = OUTPUT_BASE_COLUMNS.map((column) => lookup.get(normalize(column)))
+  const rows = records.map((record) => selected.map((column) => clean(column ? record[column] : null)))
   return {
     metadata: {
       sourceFile: file.name,
       sheet: sheetName,
       generatedAt: new Date().toISOString(),
       rowCount: rows.length,
-      columnCount: CORE_COLUMNS.length,
+      columnCount: OUTPUT_BASE_COLUMNS.length,
     },
-    columns: CORE_COLUMNS,
+    columns: OUTPUT_BASE_COLUMNS,
     rows,
   }
 }

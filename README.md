@@ -1,6 +1,19 @@
 # Explorador de listados municipales · EHE PBA
 
-Aplicación local para revisar la base maestra, cruzarla con archivos `TB_*_LISTADO_TOTAL.xls/xlsx`, explorar los 135 partidos bonaerenses, diagnosticar el método General Viamonte o General San Martín y seleccionar UPM municipales de 20 viviendas.
+Aplicación web para revisar la base maestra, cruzarla con archivos `TB_*_LISTADO_TOTAL.xls/xlsx`, explorar los 135 partidos bonaerenses, diagnosticar los tres métodos municipales y seleccionar UPM de 20 viviendas. El acceso se controla con Firebase Authentication y cuentas de Google autorizadas en Firestore.
+
+## Configurar Firebase y los accesos
+
+1. Crear o elegir un proyecto en [Firebase Console](https://console.firebase.google.com/) y registrar una aplicación web.
+2. En **Authentication → Sign-in method**, habilitar **Google**.
+3. Crear una base **Cloud Firestore**.
+4. Copiar `.env.example` como `.env.local` y completar allí el objeto de configuración de la aplicación web.
+5. En Firestore, crear la colección `authorizedUsers`. Cada documento debe usar como ID el correo de Google en minúsculas —por ejemplo `persona@gmail.com`— y contener el campo booleano `active: true`.
+6. Copiar `.firebaserc.example` como `.firebaserc`, reemplazar el project ID y desplegar las reglas con `npx firebase-tools deploy --only firestore:rules`.
+
+Las reglas incluidas permiten que cada persona consulte únicamente su propio permiso. Los usuarios de la aplicación no pueden crear ni modificar autorizaciones.
+
+La cuenta configurada en `VITE_FIREBASE_ROOT_EMAIL` entra como administradora permanente. En la barra superior verá el botón **Administrar accesos**, desde donde puede agregar, suspender, habilitar o eliminar otras cuentas sin abrir Firebase Console. El correo root también está fijado en `firestore.rules`; ambos valores deben coincidir antes del despliegue.
 
 ## Inicio rápido en Windows
 
@@ -26,7 +39,9 @@ npm run dev
 
 ## Privacidad
 
-La aplicación no tiene servidor, cuenta, telemetría ni integración con nubes. Todo se procesa en el navegador local. Los archivos elegidos no se envían a ningún lugar. Las importaciones agregadas desde la interfaz quedan en el almacenamiento local del navegador.
+Firebase recibe los datos necesarios para autenticar la cuenta de Google y comprobar si su correo está autorizado. Los Excel elegidos desde la interfaz siguen procesándose en el navegador y las importaciones quedan en el almacenamiento local.
+
+> Importante: Firebase Hosting sirve los archivos estáticos de `public/data`. El login restringe la interfaz, pero para impedir también la descarga directa de esos JSON es necesario alojarlos en Cloud Storage o Firestore y aplicar reglas de lectura para usuarios autorizados.
 
 ## Actualizar datos
 

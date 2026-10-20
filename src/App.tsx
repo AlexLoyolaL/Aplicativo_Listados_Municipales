@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Menu, Search, X } from 'lucide-react'
+import { LogOut, Menu, Search, ShieldCheck, X } from 'lucide-react'
 import { Sidebar } from './components/Sidebar'
 import { Panorama } from './components/Panorama'
 import { MunicipalityDetail } from './components/MunicipalityDetail'
@@ -8,7 +8,9 @@ import { Simulator } from './components/Simulator'
 import { Methodology } from './components/Methodology'
 import { buildMunicipalitySummaries, unpackBase } from './utils'
 import { clearAnalyses, clearBaseOverride, loadBaseOverride, loadStoredAnalyses, removeAnalysis, saveAnalysis, saveBaseOverride } from './db'
-import type { ListFileAnalysis, MunicipalityConfig, PackedBaseData, ViewName, WorkerRequest, WorkerResponse } from './types'
+import type { ListFileAnalysis, MunicipalityConfig, MunicipalitySelectionResult, PackedBaseData, SelectionResultsData, ViewName, WorkerRequest, WorkerResponse } from './types'
+import { useAuth } from './auth'
+import { AccessManagement } from './components/AccessManagement'
 
 function runWorker(action: WorkerRequest['action'], file: File): Promise<ListFileAnalysis | PackedBaseData> {
   return new Promise((resolve, reject) => {
@@ -33,11 +35,13 @@ function mergeAnalyses(bundled: ListFileAnalysis[], stored: ListFileAnalysis[]):
 }
 
 export default function App() {
+  const { user, isRoot, signOutUser } = useAuth()
   const [view, setView] = useState<ViewName>('panorama')
   const [packedBase, setPackedBase] = useState<PackedBaseData | null>(null)
   const [fullBase, setFullBase] = useState<PackedBaseData | null>(null)
   const [analyses, setAnalyses] = useState<ListFileAnalysis[]>([])
   const [municipalityConfigs, setMunicipalityConfigs] = useState<MunicipalityConfig[]>([])
+  const [selectionResults, setSelectionResults] = useState<MunicipalitySelectionResult[]>([])
   const [selectedCode, setSelectedCode] = useState('007')
   const [busy, setBusy] = useState('')
   const [error, setError] = useState('')
@@ -45,19 +49,22 @@ export default function App() {
   const [hasOverride, setHasOverride] = useState(false)
   const [mobileNav, setMobileNav] = useState(false)
   const [globalSearch, setGlobalSearch] = useState('')
+  const [accessManagerOpen, setAccessManagerOpen] = useState(false)
 
   useEffect(() => {
     async function boot() {
       try {
-        const [included, override, stored, config] = await Promise.all([
+        const [included, override, stored, config, selection] = await Promise.all([
           fetch('/data/base-operativa.json').then((response) => response.json()) as Promise<PackedBaseData>,
           loadBaseOverride(),
           loadStoredAnalyses(),
           fetch('/data/municipios-config.json').then((response) => response.json()) as Promise<{ municipalities: MunicipalityConfig[] }>,
+          fetch('/data/seleccion-municipal.json').then((response) => response.json()) as Promise<SelectionResultsData>,
         ])
         setPackedBase(override ?? included)
         setHasOverride(Boolean(override))
         setMunicipalityConfigs(config.municipalities)
+        setSelectionResults(selection.results)
         let bundled: ListFileAnalysis[] = []
         try {
           const response = await fetch('/data/listados-resumen.json')
@@ -78,6 +85,7 @@ export default function App() {
   const summaries = useMemo(() => buildMunicipalitySummaries(baseRows, analyses), [baseRows, analyses])
   const selected = summaries.find((item) => item.code === selectedCode) ?? summaries[0]
   const selectedConfig = municipalityConfigs.find((item) => item.code === selected?.code)
+  const selectedResult = selectionResults.find((item) => item.code === selected?.code)
   const selectedFiles = analyses.filter((item) => item.municipalityCode === selected?.code)
   const searchResults = globalSearch.trim() ? summaries.filter((item) => `${item.code} ${item.name}`.toLowerCase().includes(globalSearch.toLowerCase())).slice(0, 8) : []
 
@@ -159,17 +167,19 @@ export default function App() {
             {searchResults.length > 0 && <div className="search-results">{searchResults.map((item) => <button key={item.code} onClick={() => selectMunicipality(item.code, true)}><span>{item.code}</span><strong>{item.name}</strong><small>{item.eligibleUpms} UPM</small></button>)}</div>}
           </div>
           <label className="municipality-switcher"><span>{selected?.code ?? '—'}</span><div><small>Municipio</small><select aria-label="Seleccionar municipio" value={selected?.code ?? ''} onChange={(event) => selectMunicipality(event.target.value, true)}>{summaries.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}</select></div></label>
+          <div className="user-session"><span>{user?.displayName?.charAt(0) || user?.email?.charAt(0) || 'U'}</span><div><small>{isRoot ? 'Administrador root' : 'Sesión autorizada'}</small><strong>{user?.email}</strong></div>{isRoot && <button title="Administrar accesos" aria-label="Administrar accesos" onClick={() => setAccessManagerOpen(true)}><ShieldCheck size={17} /></button>}<button title="Cerrar sesión" aria-label="Cerrar sesión" onClick={signOutUser}><LogOut size={16} /></button></div>
         </div>
         <main>
           {!packedBase && !error ? <div className="loading-screen"><span className="spinner large" /><h2>Preparando el explorador local…</h2></div> : null}
-          {view === 'panorama' && packedBase && <Panorama summaries={summaries} selectedCode={selected?.code ?? ''} onSelect={(code) => selectMunicipality(code)} onOpenMunicipality={() => setView('municipio')} baseRows={baseRows.length} listFileCount={analyses.length} />}
-          {view === 'municipio' && packedBase && <MunicipalityDetail summary={selected} config={selectedConfig} baseRows={baseRows} files={selectedFiles} fullBase={fullBase} loadingFull={loadingFull} onLoadFull={loadFullBase} onOpenSelection={() => setView('simulador')} />}
+          {view === 'panorama' && packedBase && <Panorama summaries={summaries} selectedCode={selected?.code ?? ''} onSelect={(code) => selectMunicipality(code)} onOpenMunicipality={() => setView('municipio')} baseRows={baseRows} selectionResults={selectionResults} />}
+          {view === 'municipio' && packedBase && <MunicipalityDetail summary={selected} config={selectedConfig} selectionResult={selectedResult} baseRows={baseRows} files={selectedFiles} fullBase={fullBase} loadingFull={loadingFull} onLoadFull={loadFullBase} onOpenSelection={() => setView('simulador')} />}
           {view === 'archivos' && <ImportPanel metadata={packedBase?.metadata ?? null} files={analyses} busy={busy} error={error} hasOverride={hasOverride} onFiles={importFiles} onBase={importBase} onRemove={removeFile} onClear={clearImported} onResetBase={resetBase} />}
-          {view === 'simulador' && packedBase && <Simulator key={selected?.code} summary={selected} config={selectedConfig} baseRows={baseRows} files={selectedFiles} />}
+          {view === 'simulador' && packedBase && <Simulator key={selected?.code} summary={selected} config={selectedConfig} selectionResult={selectedResult} baseRows={baseRows} files={selectedFiles} />}
           {view === 'metodologia' && <Methodology />}
         </main>
         <footer>Explorador EHE PBA · ejecución local · límites de partidos: ARBA Datos Abiertos (junio 2026)</footer>
       </div>
+      {accessManagerOpen && <AccessManagement onClose={() => setAccessManagerOpen(false)} />}
     </div>
   )
 }

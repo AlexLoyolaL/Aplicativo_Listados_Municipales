@@ -1,10 +1,10 @@
-import type { BaseRow, ListFileAnalysis } from './types'
+import type { BaseRow, ListFileAnalysis, MunicipalitySelectionResult } from './types'
 import { isEligibleBaseRow } from './utils'
 
 export const DWELLINGS_PER_OPERATIONAL_UPM = 20
 export const MIN_DWELLINGS_FOR_ROTATION = 65
 
-export type DesignMethod = 'san_martin' | 'viamonte' | 'insufficient' | 'no_list'
+export type DesignMethod = 'san_martin' | 'viamonte' | 'deficit' | 'error' | 'no_list'
 
 export interface SourceUpmDesign {
   upm: string
@@ -43,6 +43,7 @@ export function analyzeMunicipalityDesign(
   target: number,
   baseRows: BaseRow[],
   files: ListFileAnalysis[],
+  selectionResult?: MunicipalitySelectionResult,
 ): MunicipalityDesign {
   const requiredOperationalUpms = Math.ceil(Math.max(0, target) / DWELLINGS_PER_OPERATIONAL_UPM)
   const operationalTarget = requiredOperationalUpms * DWELLINGS_PER_OPERATIONAL_UPM
@@ -64,6 +65,22 @@ export function analyzeMunicipalityDesign(
     grouped.set(current.upm, current)
   })
 
+  if (!grouped.size && selectionResult?.sourceFrame === 'LISTADO_TOTAL_RADIO') {
+    files.forEach((file) => file.radios.forEach((radio) => {
+      const upm = `RADIO_${radio.codradio}`
+      grouped.set(upm, {
+        upm,
+        stratum: 'Listado',
+        radios: [radio.codradio],
+        listedRadios: 0,
+        available: 0,
+        complete: false,
+        sanMartinEligible: false,
+        viamonteCapacity: 0,
+      })
+    }))
+  }
+
   const sourceUpms = [...grouped.values()].map((item) => {
     const listedRadios = item.radios.filter((radio) => (listed.get(radio) ?? 0) > 0).length
     const available = item.radios.reduce((sum, radio) => sum + (listed.get(radio) ?? 0), 0)
@@ -73,7 +90,7 @@ export function analyzeMunicipalityDesign(
       listedRadios,
       available,
       complete,
-      sanMartinEligible: complete && available >= MIN_DWELLINGS_FOR_ROTATION,
+      sanMartinEligible: available >= MIN_DWELLINGS_FOR_ROTATION,
       viamonteCapacity: Math.floor(available / DWELLINGS_PER_OPERATIONAL_UPM),
     }
   }).sort((a, b) => a.stratum.localeCompare(b.stratum) || a.upm.localeCompare(b.upm))
@@ -81,6 +98,34 @@ export function analyzeMunicipalityDesign(
   const completeSourceUpms = sourceUpms.filter((item) => item.complete).length
   const sanMartinEligibleUpms = sourceUpms.filter((item) => item.sanMartinEligible).length
   const viamonteCapacity = sourceUpms.reduce((sum, item) => sum + item.viamonteCapacity, 0)
+
+  if (selectionResult) {
+    const method = selectionResult.method
+    const labels: Record<typeof method, string> = {
+      san_martin: 'Método San Martín ponderado',
+      viamonte: 'Método Viamonte: todas las UPM',
+      deficit: 'Déficit UPM + viviendas',
+      error: 'Sin salida generada por R',
+    }
+    const defaults: Record<typeof method, string> = {
+      san_martin: 'Hay suficientes UPM fuente aptas; se selecciona un subconjunto por estrato y PPS.',
+      viamonte: 'Están presentes todas las UPM fuente esperadas; se utilizan todas.',
+      deficit: 'Se utilizan todas las UPM fuente recibidas y se agregan bloques de 20 viviendas de forma proporcional hasta alcanzar el objetivo.',
+      error: 'El proceso R no pudo generar una selección para este municipio.',
+    }
+    return {
+      method,
+      methodLabel: labels[method],
+      reason: selectionResult.reason || defaults[method],
+      requiredOperationalUpms: selectionResult.operationalUpms ?? requiredOperationalUpms,
+      operationalTarget: selectionResult.operationalTarget ?? operationalTarget,
+      sourceUpms,
+      completeSourceUpms,
+      sanMartinEligibleUpms: selectionResult.sanMartinEligibleUpms ?? sanMartinEligibleUpms,
+      viamonteCapacity: selectionResult.viamonteCapacity ?? viamonteCapacity,
+      canSelect: selectionResult.status === 'ok',
+    }
+  }
 
   if (!files.length) {
     return {
@@ -99,7 +144,7 @@ export function analyzeMunicipalityDesign(
   if (sanMartinEligibleUpms >= requiredOperationalUpms) {
     return {
       method: 'san_martin',
-      methodLabel: 'Tipo General San Martín',
+      methodLabel: 'Método San Martín ponderado',
       reason: `${sanMartinEligibleUpms} UPM fuente aptas para ${requiredOperationalUpms} UPM operativas requeridas. Corresponde sortear un subconjunto por estrato y PPS.`,
       requiredOperationalUpms,
       operationalTarget,
@@ -110,23 +155,9 @@ export function analyzeMunicipalityDesign(
       canSelect: true,
     }
   }
-  if (completeSourceUpms < sourceUpms.length) {
-    return {
-      method: 'insufficient',
-      methodLabel: 'No seleccionable todavía',
-      reason: `${sourceUpms.length - completeSourceUpms} UPM fuente no tienen todos sus radios cubiertos por el listado.`,
-      requiredOperationalUpms,
-      operationalTarget,
-      sourceUpms,
-      completeSourceUpms,
-      sanMartinEligibleUpms,
-      viamonteCapacity,
-      canSelect: false,
-    }
-  }
   if (viamonteCapacity < requiredOperationalUpms) {
     return {
-      method: 'insufficient',
+      method: 'error',
       methodLabel: 'Capacidad insuficiente',
       reason: `El marco puede formar ${viamonteCapacity} UPM operativas de 20 viviendas y se necesitan ${requiredOperationalUpms}.`,
       requiredOperationalUpms,
@@ -138,9 +169,23 @@ export function analyzeMunicipalityDesign(
       canSelect: false,
     }
   }
+  if (completeSourceUpms < sourceUpms.length) {
+    return {
+      method: 'deficit',
+      methodLabel: 'Déficit UPM + viviendas',
+      reason: `Se usan las UPM fuente recibidas y se agregan bloques de 20 viviendas proporcionalmente hasta completar ${requiredOperationalUpms} UPM operativas.`,
+      requiredOperationalUpms,
+      operationalTarget,
+      sourceUpms,
+      completeSourceUpms,
+      sanMartinEligibleUpms,
+      viamonteCapacity,
+      canSelect: true,
+    }
+  }
   return {
     method: 'viamonte',
-    methodLabel: 'Tipo General Viamonte',
+    methodLabel: 'Método Viamonte: todas las UPM',
     reason: `No hay ${requiredOperationalUpms} UPM fuente aptas para un sorteo 20×4. Se usan las ${sourceUpms.length} UPM fuente y se distribuyen proporcionalmente las UPM operativas.`,
     requiredOperationalUpms,
     operationalTarget,
@@ -255,7 +300,7 @@ export function selectSanMartinUpms(design: MunicipalityDesign, seed: number): S
 
 export function allocateViamonteUpms(design: MunicipalityDesign): Map<string, number> {
   const result = new Map<string, number>()
-  if (design.method !== 'viamonte') return result
+  if (design.method !== 'viamonte' && design.method !== 'deficit') return result
   const strata = [...new Set(design.sourceUpms.map((item) => item.stratum))].sort()
   const stratumItems = strata.map((stratum) => design.sourceUpms.filter((item) => item.stratum === stratum))
   const weights = stratumItems.map((items) => items.reduce((sum, item) => sum + item.available, 0))

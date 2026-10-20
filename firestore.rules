@@ -1,0 +1,29 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedInWithGoogle() {
+      return request.auth != null
+        && request.auth.token.email != null
+        && request.auth.token.firebase.sign_in_provider == 'google.com';
+    }
+
+    function isRoot() {
+      return signedInWithGoogle()
+        && request.auth.token.email == 'alex.loyola.ind@gmail.com';
+    }
+
+    match /authorizedUsers/{email} {
+      allow get: if isRoot() || (
+        signedInWithGoogle()
+        && request.auth.token.email == email
+        && resource.data.active == true
+      );
+      allow list, create, update, delete: if isRoot();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

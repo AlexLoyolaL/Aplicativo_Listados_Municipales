@@ -1,12 +1,13 @@
 import { useMemo, useState } from 'react'
 import { AlertCircle, ArrowRight, CheckCircle2, ChevronDown, Database, Download, Home, Layers3, Search, Waypoints } from 'lucide-react'
-import type { BaseRow, ListFileAnalysis, MunicipalityConfig, MunicipalitySummary, PackedBaseData } from '../types'
+import type { BaseRow, ListFileAnalysis, MunicipalityConfig, MunicipalitySelectionResult, MunicipalitySummary, PackedBaseData } from '../types'
 import { downloadCsv, fmt, isEligibleBaseRow } from '../utils'
 import { analyzeMunicipalityDesign } from '../design'
 
 interface Props {
   summary: MunicipalitySummary | undefined
   config: MunicipalityConfig | undefined
+  selectionResult: MunicipalitySelectionResult | undefined
   baseRows: BaseRow[]
   files: ListFileAnalysis[]
   fullBase: PackedBaseData | null
@@ -24,7 +25,7 @@ interface UpmRow {
   selected: boolean
 }
 
-export function MunicipalityDetail({ summary, config, baseRows, files, fullBase, loadingFull, onLoadFull, onOpenSelection }: Props) {
+export function MunicipalityDetail({ summary, config, selectionResult, baseRows, files, fullBase, loadingFull, onLoadFull, onOpenSelection }: Props) {
   const [query, setQuery] = useState('')
   const [mode, setMode] = useState<'upm' | 'radio'>('upm')
   const [selectedRadio, setSelectedRadio] = useState('')
@@ -53,7 +54,7 @@ export function MunicipalityDetail({ summary, config, baseRows, files, fullBase,
   const firstFile = files[0]
   const eligibleListRadios = new Set(eligible.filter((row) => listRadios.has(row.codradio)).map((row) => row.codradio)).size
   const unmapped = [...listRadios.keys()].filter((code) => !rows.some((row) => row.codradio === code)).length
-  const design = useMemo(() => analyzeMunicipalityDesign(summary?.code ?? '', config?.sampleTarget ?? 0, baseRows, files), [baseRows, config?.sampleTarget, files, summary?.code])
+  const design = useMemo(() => analyzeMunicipalityDesign(summary?.code ?? '', config?.sampleTarget ?? 0, baseRows, files, selectionResult), [baseRows, config?.sampleTarget, files, selectionResult, summary?.code])
 
   const fullRecord = useMemo(() => {
     if (!fullBase || !selectedRadio) return null
@@ -75,8 +76,8 @@ export function MunicipalityDetail({ summary, config, baseRows, files, fullBase,
       <header className="page-heading"><div><span className="eyebrow">Municipio {summary.code}</span><h1>{summary.name}</h1><p>Conciliación entre la base maestra y los listados de viviendas.</p></div><div className={files.length ? 'status-pill ok' : 'status-pill'}>{files.length ? <CheckCircle2 size={16} /> : <AlertCircle size={16} />}{files.length ? `${files.length} listado${files.length > 1 ? 's' : ''}` : 'Sin listado cargado'}</div></header>
       <section className={`design-status ${design.method}`}>
         <div><span className="eyebrow">Método de selección</span><h2>{design.methodLabel}</h2><p>{design.reason}</p></div>
-        <div className="design-facts"><span><b>{fmt.format(design.requiredOperationalUpms)}</b> UPM requeridas</span><span><b>{fmt.format(design.sanMartinEligibleUpms)}</b> aptas 20×4</span><span><b>{fmt.format(design.viamonteCapacity)}</b> capacidad Viamonte</span></div>
-        <button className="secondary-button" onClick={onOpenSelection}>Ver selección <ArrowRight size={15} /></button>
+        <div className="design-facts"><span><b>{fmt.format(design.requiredOperationalUpms)}</b> UPM requeridas</span><span><b>{fmt.format(design.sanMartinEligibleUpms)}</b> aptas San Martín</span><span><b>{fmt.format(selectionResult?.sourceUpmsMissing ?? 0)}</b> UPM fuente faltantes</span></div>
+        <button className="secondary-button" disabled={!design.canSelect} onClick={onOpenSelection}>{design.canSelect ? 'Ver selección' : 'Sin selección'} <ArrowRight size={15} /></button>
       </section>
       <section className="metric-grid detail-metrics">
         <article className="metric-card"><div className="metric-icon green"><Layers3 /></div><div><span>UPM aptas</span><strong>{fmt.format(summary.eligibleUpms)}</strong><small>{fmt.format(summary.eligibleRadios)} radios compuestos</small></div></article>

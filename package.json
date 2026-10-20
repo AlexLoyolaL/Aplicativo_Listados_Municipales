@@ -7,11 +7,16 @@
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host 127.0.0.1",
+    "generar:base": "node scripts/generar-base-maestra.mjs",
+    "compactar:base": "node scripts/generar-base-operativa.mjs",
     "resumir:listados": "node scripts/generar-resumen-listados.mjs",
-    "configurar:municipios": "node scripts/generar-config-municipios.mjs"
+    "configurar:municipios": "node scripts/generar-config-municipios.mjs",
+    "resumir:seleccion": "node scripts/generar-seleccion-municipal.mjs",
+    "actualizar:datos": "npm run generar:base && npm run compactar:base && npm run configurar:municipios && npm run resumir:listados && npm run resumir:seleccion"
   },
   "dependencies": {
     "dexie": "^4.0.11",
+    "firebase": "^13.0.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",
@@ -27,5 +32,8 @@
     "@vitejs/plugin-react": "^4.3.4",
     "typescript": "^5.7.3",
     "vite": "^6.0.7"
+  },
+  "overrides": {
+    "@grpc/grpc-js": "^1.13.6"
   }
 }

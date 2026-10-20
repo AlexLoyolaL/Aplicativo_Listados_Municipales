@@ -41,6 +41,7 @@ export function unpackBase(data: PackedBaseData): BaseRow[] {
     partido: String(read(row, 'partido') ?? 'Sin nombre'),
     codloc: String(read(row, 'codloc') ?? ''),
     localidad: String(read(row, 'localidad') ?? ''),
+    urb_rur_2000: valueToNumber(read(row, 'urb_rur_2000')),
     loc_mas_5000: valueToNumber(read(row, 'loc_mas_5000')),
     viviendas_mora_presentes: valueToNumber(read(row, 'viviendas_mora_presentes')),
     CLUSTER_ID: read(row, 'CLUSTER_ID') as string | number | null,
@@ -50,6 +51,31 @@ export function unpackBase(data: PackedBaseData): BaseRow[] {
     UPM_seleccionada: valueToNumber(read(row, 'UPM_seleccionada')),
     UPM_seleccionada2: valueToNumber(read(row, 'UPM_seleccionada2')),
   }))
+}
+
+export interface UpmPopulationCounts {
+  over5000: number
+  under2000: number
+  hasUnder2000Classification: boolean
+}
+
+export function countUpmsByLocalitySize(rows: BaseRow[]): UpmPopulationCounts {
+  const over5000 = new Set<string>()
+  const under2000 = new Set<string>()
+  let hasUnder2000Classification = false
+
+  rows.forEach((row) => {
+    if (row.urb_rur_2000 !== null) hasUnder2000Classification = true
+    if (!row.UPMs_automaticas) return
+    if (row.loc_mas_5000 === 1) over5000.add(row.UPMs_automaticas)
+    if (row.urb_rur_2000 === 0) under2000.add(row.UPMs_automaticas)
+  })
+
+  return {
+    over5000: over5000.size,
+    under2000: under2000.size,
+    hasUnder2000Classification,
+  }
 }
 
 export function isEligibleBaseRow(row: BaseRow): boolean {
